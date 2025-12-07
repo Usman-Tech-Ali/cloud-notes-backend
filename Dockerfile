@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install dependencies (using npm install since package-lock.json may not be in repo)
+RUN npm install --production
 
 # Copy application code (excluding files in .dockerignore like .env)
 COPY . .
